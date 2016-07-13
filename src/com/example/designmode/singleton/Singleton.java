@@ -1,4 +1,4 @@
-package com.example.designmode;
+package com.example.designmode.singleton;
 
 //平时在 android 中使用 double-checked 或者 SingletonHolder 都是可以的，毕竟 android 早就不使用 JDK5 之前的版本了。由于 android 中的多进程机制，在不同进程中无法创建同一个 instance 变量，就像 Application 类会初始化两次一样，这点需要注意。 
 //但是不管采取何种方案，请时刻牢记单例的三大要点：
