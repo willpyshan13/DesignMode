@@ -1,16 +1,33 @@
 package com.example.designmode;
 
+import com.example.designmode.abstractfactory.MacFactory;
+import com.example.designmode.factory.IAnimalCreator;
+import com.example.designmode.factory.IAnimalCreator2;
+import com.example.designmode.factory.Monkey;
+import com.example.designmode.factory.MonkeyCreator;
+
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
 public class MainActivity extends Activity {
+    IAnimalCreator animalCreator;
+    IAnimalCreator2 animalCreator2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        animalCreator = new MonkeyCreator();
+        animalCreator.createAnimal();
+
+        animalCreator2.createAnimal(Monkey.class);
+
+        MacFactory macFactory = new MacFactory();
+        macFactory.createButton().show();
+        macFactory.createText().show();
     }
 
     @Override
