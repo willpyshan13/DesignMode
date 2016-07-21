@@ -3,6 +3,7 @@ package com.example.designmode;
 import java.lang.reflect.Proxy;
 
 import com.example.designmode.abstractfactory.MacFactory;
+import com.example.designmode.builder.Computer;
 import com.example.designmode.factory.IAnimalCreator;
 import com.example.designmode.factory.IAnimalCreator2;
 import com.example.designmode.factory.Monkey;
@@ -42,6 +43,10 @@ public class MainActivity extends Activity {
 
         subject2.operationA();
         subject2.operationB();
+
+        Computer computer = new Computer.Builder().setCPU("inter-skylake-i7").setGPU("GTX-Titan")
+                .setMemoryType("ddr4-2133MHz").setMemorySize(16).setStorageType("ssd").setStorageSize(512)
+                .setScreenType("IPS").setScreenSize(28).setOSType("Ubuntu/Window10").create();
     }
 
     @Override
