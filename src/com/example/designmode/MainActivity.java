@@ -1,10 +1,16 @@
 package com.example.designmode;
 
+import java.lang.reflect.Proxy;
+
 import com.example.designmode.abstractfactory.MacFactory;
 import com.example.designmode.factory.IAnimalCreator;
 import com.example.designmode.factory.IAnimalCreator2;
 import com.example.designmode.factory.Monkey;
 import com.example.designmode.factory.MonkeyCreator;
+import com.example.designmode.proxy.ISubjectProxy;
+import com.example.designmode.proxy.ProxyA;
+import com.example.designmode.proxy.RealSubject;
+import com.example.designmode.proxy.Subject;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -28,6 +34,14 @@ public class MainActivity extends Activity {
         MacFactory macFactory = new MacFactory();
         macFactory.createButton().show();
         macFactory.createText().show();
+
+        Subject subject = new RealSubject();
+        ISubjectProxy proxy = new ProxyA(subject);
+        Subject subject2 = (Subject) Proxy.newProxyInstance(subject.getClass().getClassLoader(),
+                subject.getClass().getInterfaces(), proxy);
+
+        subject2.operationA();
+        subject2.operationB();
     }
 
     @Override
